@@ -50,18 +50,7 @@ changeColor.forEach((element) => {
     })
     // console.log(element);
 });
-// for(let i=0;i<changeColor.length;i++){
-//     changeColor.addEventListener("click",()=>{
-//         let el=changeColor[0];
-//         while(el){
-//             if(el.classList.contains("newclass")){
-//                 el.classList.remove("newclass");
-//             }
-//             el=el.nextSibling;
-//         }
-//         element.classList.add("newclass");
-//     })
-// }
+
 
 const logout = document.querySelector(".sign-out");
 
