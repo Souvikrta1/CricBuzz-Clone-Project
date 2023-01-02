@@ -51,17 +51,16 @@ changeColor.forEach((element) => {
     // console.log(element);
 });
 
-
+//login related
 const logout = document.querySelector(".sign-out");
 
 let data = localStorage.getItem("data");
 if(data == "no"){
-    window.location.href = "index1.html";
+    window.location.href = "login.html";
 }
-
 
 logout.addEventListener("click",()=>{
     localStorage.clear();
     localStorage.setItem("data","no");
-    window.location.href="index.html";
+    window.location.href="index.html"
 })
