@@ -1,4 +1,4 @@
-@media only screen and (max-width:600px){
+@media only screen and (max-width:750px){
     nav img{
         width: 80px;
     }
@@ -16,18 +16,18 @@
 
     .mobile-preview1{
         display: flex;
-        margin: 2% 0% 2% 7%;
+        margin: 2% 0% 2% 4%;
         color: black;
-    }
-
-    .mobile-preview2{
-        display: flex;
-        margin: 2% 0% 2% 2%;
-        color: black;
+        font-weight: 500;
+        font-size: small;
     }
 
     #search{
         display: none;
+    }
+
+    .match1-status{
+        margin-left: -2%;
     }
 
     #mobile-menu{
@@ -56,6 +56,7 @@
 
     #user-login{
         background-color: transparent;
+        right: 30%;
     }
 
     nav{
@@ -68,6 +69,7 @@
     .featured-matches{
         display: flex;
         flex-direction: column;
+        height: max-content;
     }
 
     .featured-matches h4{
@@ -81,47 +83,19 @@
         display: flex;
         flex-direction: column;
     }
-    .first-match{
+
+    .stat-btn span{
+        margin-left: -2%;
+    }
+
+    .featured-scorecard{
         width: 100%;
         border-right: none;
-        border-bottom: 0.5px solid black;
+        height: max-content;
+        border-bottom: 1px solid rgb(203, 200, 200) ;
     }
 
     .first-match p{
-        font-weight: bold;
-    }
-
-
-    .second-match{
-        width: 100%;
-        border-right: none;
-        border-bottom: 0.5px solid black;
-        padding: 1% 0% 1% 4%;
-    }
-
-    .second-match p{
-        font-weight: bold;
-    }
-
-    .third-match{
-        width: 100%;
-        border-right: none;
-        border-bottom: 0.5px solid black;
-        padding: 1% 0% 1% 4%;
-    }
-
-    .third-match p{
-        font-weight: bold;
-    }
-
-    .fourth-match{
-        width: 100%;
-        border-right: none;
-        border-bottom: 0.5px solid black;
-        padding: 1% 0% 1% 4%;
-    }
-
-    .fourth-match p{
         font-weight: bold;
     }
 
@@ -133,6 +107,8 @@
     .match-stats-p2{
         display: none;
     }
+
+
 
     main{
         flex-direction: column-reverse;
@@ -154,7 +130,7 @@
         width: 110%;
         background-color: #335A7B;
         color: white;
-        padding: 2% 0%;
+        padding: 2% 0% 2% 4%;
         margin-left: -5%;
         font-weight: bold;
     }
@@ -163,10 +139,10 @@
         display: flex;
         background-color: #335A7B;
         color: white;
-        padding: 2% 0% 2% 1%;
+        padding: 2% 0% 2% 2%;
         width: 99%;
         font-size: larger;
-        
+        list-style: none;
     }
 
     .show-ad2{
@@ -325,6 +301,34 @@
         background-color: white;
         font-size: small;
     }
-
 }
 
+@media only screen and (max-width:960px){
+
+    .wrap{
+        padding: 0% 300px;
+    }
+    .menu-btn{
+        font-size: small;
+        justify-content: left;
+    }
+    .nav-btn{
+        height: 45px;
+    }
+    .user-area{
+        width: 27%;
+        justify-content: right;
+        margin-left: 1%;
+    }
+
+    .match{
+        white-space: nowrap;
+        font-size: x-small;
+    }
+    .matches{
+        display: flex;
+        align-items: center;
+
+    }
+
+}
