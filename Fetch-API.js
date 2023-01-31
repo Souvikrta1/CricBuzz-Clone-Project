@@ -21,6 +21,14 @@ const options = {
     }
 };
 
+const options2 = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'a615df442bmsh6e75e1cec7012d8p11c828jsn840129996a7a',
+		'X-RapidAPI-Host': 'cricbuzz-cricket.p.rapidapi.com'
+	}
+};
+
 window.onload = async () => {
     //news data fetch
     const centerContainer = document.querySelector(".center-container");
@@ -109,20 +117,37 @@ window.onload = async () => {
     `
     })
 
+    let counter = [0, 2];
+
+    // let data2 = await fetch('https://cricbuzz-cricket.p.rapidapi.com/schedule/v1/international',options);
+
+    // let schedule = await data2.json();
+
+    // let cricLive = flattenObject(schedule);
+
+    // let matchId = [];
+    // counter.forEach(ele => {
+    //     matchId.push(cricLive[`matchScheduleMap.${ele}.scheduleAdWrapper.matchScheduleList.0.matchInfo.0.matchId;`])
+    // })
+
+    // console.log(matchId)
 
 
-    let rawData = await fetch('https://cricbuzz-cricket.p.rapidapi.com/matches/v1/recent', options);
+
+
+
+    let rawData = await fetch('https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live', options);
 
     let data = await rawData.json();
 
     let cricData = flattenObject(data);
 
-    let counter = [0, 2, 3, 4];
+    
 
     console.log(cricData[`typeMatches.0.seriesMatches.${counter[0]}.seriesAdWrapper.matches.0.matchInfo.seriesName`])
 
     counter.forEach((ele, index) => {
-        if (index <= 4) {
+        if (index <= 2) {
             statpage1.innerHTML += `
                 <div class="featured-scorecard">
                 <a class="stat-btn" href='https://www.cricbuzz.com/cricket-match/live-scores/recent-matches'>
@@ -138,6 +163,58 @@ window.onload = async () => {
                     <p class="match1-status">${cricData[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.status`]}</p>
                 </a>
                 <a class="${cricData[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.team1.teamSName`]} ${cricData[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.team2.teamSName`]} hideFantasy" href="https://www.cricbuzz.com/cricket-fantasy-handbook/59958/ind-vs-sl-2nd-t20i-sri-lanka-tour-of-india-2023#!/expert-picks"><i class="fa-solid fa-trophy"></i> Fantasy Handbook</a>
+                </div>    
+            `
+            const runs1 = document.querySelectorAll(".firstMatch-runs1");
+            const runs2 = document.querySelectorAll(".firstMatch-runs2");
+
+            runs1.forEach(ele => {
+                if (ele.innerText.includes("undefined")) {
+                    ele.innerText = ""
+                }
+            })
+            runs2.forEach(ele => {
+                if (ele.innerText.includes("undefined")) {
+                    ele.innerText = ""
+                }
+            })
+            const fantasyChecker = document.querySelectorAll(".hideFantasy");
+
+            fantasyChecker.forEach(ele => {
+                if (ele.classList.contains("IND")) {
+                    ele.style.display = "block";
+                }
+            })
+        }
+    })
+
+    let rawData2 = await fetch('https://cricbuzz-cricket.p.rapidapi.com/matches/v1/recent', options2);
+
+    let data2 = await rawData2.json();
+
+    let cricData2 = flattenObject(data2);
+
+    
+
+    console.log(cricData[`typeMatches.0.seriesMatches.${counter[0]}.seriesAdWrapper.matches.0.matchInfo.seriesName`])
+
+    counter.forEach((ele, index) => {
+        if (index <= 2) {
+            statpage1.innerHTML += `
+                <div class="featured-scorecard">
+                <a class="stat-btn" href='https://www.cricbuzz.com/cricket-match/live-scores/recent-matches'>
+                    <p class="mobile-preview1">${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.seriesName`]}</p>
+                    <span>
+                    <p class="team-name">${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.team1.teamSName`]}</p>
+                    <p class="firstMatch-runs1">${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchScore.team1Score.inngs1.runs`]}-${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchScore.team1Score.inngs1.wickets`]} (${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchScore.team1Score.inngs1.overs`]})</p>
+                    </span>
+                    <span>
+                        <p class="team-name">${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.team2.teamSName`]}</p>
+                        <p class="firstMatch-runs2">${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchScore.team2Score.inngs1.runs`]}-${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchScore.team2Score.inngs1.wickets`]} (${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchScore.team2Score.inngs1.overs`]})</p>
+                    </span>
+                    <p class="match1-status">${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.status`]}</p>
+                </a>
+                <a class="${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.team1.teamSName`]} ${cricData2[`typeMatches.0.seriesMatches.${ele}.seriesAdWrapper.matches.0.matchInfo.team2.teamSName`]} hideFantasy" href="https://www.cricbuzz.com/cricket-fantasy-handbook/59958/ind-vs-sl-2nd-t20i-sri-lanka-tour-of-india-2023#!/expert-picks"><i class="fa-solid fa-trophy"></i> Fantasy Handbook</a>
                 </div>    
             `
             const runs1 = document.querySelectorAll(".firstMatch-runs1");
